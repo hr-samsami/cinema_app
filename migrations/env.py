@@ -11,6 +11,8 @@ from models.base import Base
 from models.booking import Booking #noqa
 from models.room import Room #noqa
 from models.movie import Movie #noqa
+from models.schedule import Schedule #noqa
+
 
 db_url = str(settings.ASYNC_DATABASE_URI)
 # this is the Alembic Config object, which provides

@@ -14,4 +14,5 @@ class Room(Base):
     name: Mapped[str] = mapped_column(String, unique=True, index=True)
     rows: Mapped[int] = mapped_column(Integer)
     seats_per_row: Mapped[int] = mapped_column(Integer)
-    movies: Mapped[List[Movie]] = relationship(back_populates='room')
+
+    schedules: Mapped[List["Schedule"]] = relationship(back_populates="room")

@@ -14,9 +14,8 @@ class Booking(Base):
 
     id: Mapped[int] = mapped_column(Integer, primary_key=True, index=True)
     user_id: Mapped[UUID] = mapped_column(UUID(as_uuid=True), index=True)
-    room_id: Mapped[int] = mapped_column(ForeignKey('rooms.id', ondelete='CASCADE'))
-    movie_id: Mapped[int] = mapped_column(ForeignKey('movies.id', ondelete='CASCADE'))
+    schedule_id: Mapped[int] = mapped_column(ForeignKey("schedules.id", ondelete="CASCADE"), nullable=False)
     row_number: Mapped[int] = mapped_column(Integer)
     seat_number: Mapped[int] = mapped_column(Integer)
 
-    movie: Mapped['Movie'] = relationship(back_populates='bookings')
+    schedule: Mapped["Schedule"] = relationship(back_populates="bookings")
