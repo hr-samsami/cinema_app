@@ -5,6 +5,7 @@ from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from models.base import Base
 from models.movie import Movie
+from models.schedule import Schedule
 
 
 class Room(Base):
@@ -15,4 +16,4 @@ class Room(Base):
     rows: Mapped[int] = mapped_column(Integer)
     seats_per_row: Mapped[int] = mapped_column(Integer)
 
-    schedules: Mapped[List["Schedule"]] = relationship(back_populates="room")
+    movies: Mapped[List["Schedule"]] = relationship(back_populates="room")
