@@ -1,13 +1,13 @@
 from uuid import UUID
 
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 
 
 class BookingBase(BaseModel):
     user_id: UUID
     schedule_id: int
-    seat_row: int
-    seat_number: int
+    row_number: int=Field(gt=0)
+    seat_number: int=Field(gt=0)
 
 
 class BookingCreate(BookingBase):
