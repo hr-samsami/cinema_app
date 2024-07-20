@@ -26,3 +26,7 @@ class BookingNotFoundException(DetailedHTTPException):
     MESSAGE = 'Booking not found'
     STATUS_CODE = status.HTTP_404_NOT_FOUND
     
+class ScheduleNotFoundException(DetailedHTTPException):
+    ERROR_CODE = 40404
+    MESSAGE = 'Schedule not found'
+    STATUS_CODE = status.HTTP_404_NOT_FOUND
