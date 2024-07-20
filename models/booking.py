@@ -6,7 +6,7 @@ from sqlalchemy.orm import Mapped, mapped_column, relationship
 from models.base import Base
 
 if TYPE_CHECKING:
-    from models.movie import Movie
+    from models.schedule import Schedule
 
 
 class Booking(Base):
