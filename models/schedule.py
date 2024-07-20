@@ -14,8 +14,8 @@ class Schedule(Base):
     id: Mapped[int] = mapped_column(Integer, primary_key=True, index=True)
     room_id: Mapped[int] = mapped_column(ForeignKey("rooms.id", ondelete='CASCADE'), nullable=False)
     movie_id: Mapped[int] = mapped_column(ForeignKey("movies.id", ondelete='CASCADE'), nullable=False)
-    start_time: Mapped[DateTime] = mapped_column(DateTime, nullable=False)
-    end_time: Mapped[DateTime] = mapped_column(DateTime, nullable=False)
+    start_time: Mapped[DateTime] = mapped_column(DateTime(timezone=True), nullable=False)
+    end_time: Mapped[DateTime] = mapped_column(DateTime(timezone=True), nullable=False)
 
     room: Mapped["Room"] = relationship(back_populates="movies")
     movie: Mapped["Movie"] = relationship(back_populates="rooms")
