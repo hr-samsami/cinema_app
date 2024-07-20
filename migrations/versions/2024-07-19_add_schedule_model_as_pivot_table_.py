@@ -52,7 +52,7 @@ def downgrade() -> None:
     op.create_foreign_key('movies_room_id_fkey', 'movies', 'rooms', ['room_id'], ['id'], ondelete='CASCADE')
     op.add_column('bookings', sa.Column('room_id', sa.INTEGER(), autoincrement=False, nullable=False))
     op.add_column('bookings', sa.Column('movie_id', sa.INTEGER(), autoincrement=False, nullable=False))
-    op.drop_constraint(None, 'bookings', type_='foreignkey')
+    op.drop_constraint('bookings_pkey', 'bookings', type_='foreignkey')
     op.create_foreign_key('bookings_room_id_fkey', 'bookings', 'rooms', ['room_id'], ['id'], ondelete='CASCADE')
     op.create_foreign_key('bookings_movie_id_fkey', 'bookings', 'movies', ['movie_id'], ['id'], ondelete='CASCADE')
     op.drop_column('bookings', 'schedule_id')

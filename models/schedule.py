@@ -1,10 +1,13 @@
-# cinema_app/models/schedule.py
-
-from typing import List
+from typing import TYPE_CHECKING, List
 from sqlalchemy import Integer, DateTime, ForeignKey
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 from models.base import Base
 
+if TYPE_CHECKING:
+    from models.room import Room
+    from models.movie import Movie
+    from models.booking import Booking
+    
 class Schedule(Base):
     __tablename__ = "schedules"
 
