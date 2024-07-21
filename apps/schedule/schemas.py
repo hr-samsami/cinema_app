@@ -25,7 +25,6 @@ class ScheduleUpdate(ScheduleBase):
 
 class Schedule(ScheduleBase):
     id: int
-    # bookings: List["Booking"] = []
 
     class Config:
         orm_mode = True

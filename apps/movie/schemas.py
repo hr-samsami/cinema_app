@@ -21,7 +21,11 @@ class MovieUpdate(MovieBase):
 
 class Movie(MovieBase):
     id: int
-    schedules: List['Schedule'] = []
 
     class Config:
         orm_mode = True
+
+
+class MovieSchedule(Movie):
+    start_time: datetime
+    end_time: datetime

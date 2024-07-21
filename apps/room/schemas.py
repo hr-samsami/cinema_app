@@ -21,7 +21,6 @@ class RoomUpdate(RoomBase):
 
 class Room(RoomBase):
     id: int
-    schedules: List['Schedule'] = []
 
     class Config:
         orm_mode = True

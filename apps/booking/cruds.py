@@ -1,3 +1,4 @@
+from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from apps.booking.models import Booking
@@ -7,6 +8,9 @@ from apps.booking.schemas import BookingCreate, BookingUpdate
 async def get_booking(db: AsyncSession, booking_id: int):
     return await db.get(Booking, booking_id)
 
+async def get_bookings(db: AsyncSession, skip: int = 0, limit: int = 100):
+    result = await db.execute(select(Booking).offset(skip).limit(limit))
+    return result.scalars().all()
 
 async def create_booking(db: AsyncSession, booking: BookingCreate):
     db_booking = Booking(**booking.model_dump())
