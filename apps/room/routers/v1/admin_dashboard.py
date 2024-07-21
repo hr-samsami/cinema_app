@@ -1,11 +1,10 @@
 from fastapi import APIRouter, Depends
-
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from apps.room.exceptions import RoomNotFoundException
-from core.dependencies import get_db
 from apps.room.cruds import create_room, delete_room, get_room, update_room
+from apps.room.exceptions import RoomNotFoundException
 from apps.room.schemas import Room, RoomCreate, RoomUpdate
+from core.dependencies import get_db
 
 router = APIRouter()
 

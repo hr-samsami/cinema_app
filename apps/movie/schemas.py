@@ -11,7 +11,6 @@ class MovieBase(BaseModel):
     poster: str
 
 
-
 class MovieCreate(MovieBase):
     pass
 
@@ -22,7 +21,7 @@ class MovieUpdate(MovieBase):
 
 class Movie(MovieBase):
     id: int
-    schedules: List["Schedule"] = []
+    schedules: List['Schedule'] = []
 
     class Config:
         orm_mode = True

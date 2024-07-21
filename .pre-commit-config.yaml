@@ -20,12 +20,5 @@ repos:
     rev: v0.1.13
     hooks:
       - id: ruff
-        args: [--fix]
+        entry: ruff check --select I --fix
       - id: ruff-format
-  - repo: https://github.com/pre-commit/mirrors-isort
-    rev: v5.10.1
-    hooks:
-      - id: isort
-        name: Sort imports
-        description: Sort imports using isort.
-        args: ["--profile", "black"]

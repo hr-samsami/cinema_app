@@ -4,13 +4,16 @@ from sqlalchemy.future import select
 from apps.schedule.models import Schedule
 from apps.schedule.schemas import ScheduleCreate, ScheduleUpdate
 
+
 async def get_schedule(db: AsyncSession, schedule_id: int):
     result = await db.execute(select(Schedule).filter(Schedule.id == schedule_id))
     return result.scalars().first()
 
+
 async def get_schedules(db: AsyncSession, skip: int = 0, limit: int = 100):
     result = await db.execute(select(Schedule).offset(skip).limit(limit))
     return result.scalars().all()
+
 
 async def create_schedule(db: AsyncSession, schedule: ScheduleCreate):
     db_schedule = Schedule(**schedule.model_dump())
@@ -18,6 +21,7 @@ async def create_schedule(db: AsyncSession, schedule: ScheduleCreate):
     await db.commit()
     await db.refresh(db_schedule)
     return db_schedule
+
 
 async def update_schedule(db: AsyncSession, schedule_id: int, schedule: ScheduleUpdate):
     db_schedule = await get_schedule(db, schedule_id)
@@ -29,6 +33,7 @@ async def update_schedule(db: AsyncSession, schedule_id: int, schedule: Schedule
     await db.commit()
     await db.refresh(db_schedule)
     return db_schedule
+
 
 async def delete_schedule(db: AsyncSession, schedule_id: int):
     db_schedule = await get_schedule(db, schedule_id)

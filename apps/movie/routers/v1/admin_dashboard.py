@@ -1,11 +1,10 @@
 from fastapi import APIRouter, Depends, HTTPException
-
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from core.dependencies import get_db
 from apps.movie.cruds import create_movie, delete_movie, get_movie, update_movie
 from apps.movie.exceptions import MovieNotFoundException
 from apps.movie.schemas import Movie, MovieCreate, MovieUpdate
+from core.dependencies import get_db
 
 router = APIRouter()
 

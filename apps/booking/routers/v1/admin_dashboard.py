@@ -1,11 +1,10 @@
 from fastapi import APIRouter, Depends, HTTPException
-
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from apps.booking.exceptions import BookingNotFoundException
-from core.dependencies import get_db
 from apps.booking.cruds import create_booking, delete_booking, get_booking, update_booking
+from apps.booking.exceptions import BookingNotFoundException
 from apps.booking.schemas import Booking, BookingCreate, BookingUpdate
+from core.dependencies import get_db
 
 router = APIRouter()
 

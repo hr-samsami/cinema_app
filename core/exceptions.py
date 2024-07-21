@@ -1,7 +1,9 @@
 from typing import Any
+
 from fastapi import HTTPException, Request, status
 from fastapi.responses import JSONResponse
 from sqlalchemy.exc import IntegrityError
+
 
 class DetailedHTTPException(HTTPException):
     ERROR_CODE = 10000
@@ -12,7 +14,8 @@ class DetailedHTTPException(HTTPException):
         message = message if message else self.MESSAGE
         detail = {'message': message, 'code': self.ERROR_CODE}
         super().__init__(status_code=self.STATUS_CODE, detail=detail, **kwargs)
-        
+
+
 async def integrity_exception_handler(request: Request, exc: IntegrityError):
     detail = 'Integrity error: constraint violation.'
 
