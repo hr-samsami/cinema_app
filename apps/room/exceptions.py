@@ -10,6 +10,7 @@ class RoomNotFoundException(DetailedHTTPException):
     MESSAGE = 'Room not found'
     STATUS_CODE = status.HTTP_404_NOT_FOUND
 
+
 class NoUpcomingMoviesFoundException(DetailedHTTPException):
     ERROR_CODE = 40405
     MESSAGE = 'No upcoming movies found for this room'

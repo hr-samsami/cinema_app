@@ -28,3 +28,11 @@ class Schedule(ScheduleBase):
 
     class Config:
         orm_mode = True
+
+
+class MovieSchedule(BaseModel):
+    schedule_id: int
+    title: str
+    poster: str
+    start_time: datetime
+    end_time: datetime

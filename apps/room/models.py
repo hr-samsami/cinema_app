@@ -17,3 +17,7 @@ class Room(Base):
     seats_per_row: Mapped[int] = mapped_column(Integer)
 
     movies: Mapped[List['Schedule']] = relationship(back_populates='room')
+
+    @property
+    def total_seats(self):
+        return self.rows * self.seats_per_row

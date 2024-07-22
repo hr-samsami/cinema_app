@@ -1,3 +1,4 @@
+from typing import List, Tuple
 from uuid import UUID
 
 from pydantic import BaseModel, Field
@@ -20,6 +21,21 @@ class BookingUpdate(BookingBase):
 
 class Booking(BookingBase):
     id: int
+
+    class Config:
+        orm_mode = True
+
+
+ROW_NUMBER = int
+SEAT_NUMBER = int
+
+
+class SeatAvailability(BaseModel):
+    schedule_id: int
+    booked_seats: List[Tuple[ROW_NUMBER, SEAT_NUMBER]]
+    rows: int
+    seats_per_row: int
+    total_seats: int
 
     class Config:
         orm_mode = True

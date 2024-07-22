@@ -24,8 +24,3 @@ class Movie(MovieBase):
 
     class Config:
         orm_mode = True
-
-
-class MovieSchedule(Movie):
-    start_time: datetime
-    end_time: datetime
