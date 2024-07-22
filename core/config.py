@@ -1,7 +1,7 @@
 from typing import Any
 
 from pydantic import PostgresDsn, field_validator
-from pydantic_core.core_schema import FieldValidationInfo
+from pydantic_core.core_schema import ValidationInfo
 from pydantic_settings import BaseSettings
 
 
@@ -19,7 +19,7 @@ class Settings(BaseSettings):
     ASYNC_DATABASE_URI: PostgresDsn | str = ''
 
     @field_validator('ASYNC_DATABASE_URI', mode='after')
-    def assemble_db_connection(cls, v: str | None, info: FieldValidationInfo) -> Any:
+    def assemble_db_connection(cls, v: str | None, info: ValidationInfo) -> Any:
         if isinstance(v, str) and v == '':
             return PostgresDsn.build(
                 scheme=info.data['DATABASE_SCHEME'],
@@ -31,7 +31,7 @@ class Settings(BaseSettings):
             )
         return v
 
-    class Config:
+    class ConfigDict:
         env_file = '.env'
 
 
