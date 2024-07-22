@@ -6,8 +6,12 @@ from sqlalchemy import pool
 from sqlalchemy.engine import Connection
 from sqlalchemy.ext.asyncio import async_engine_from_config
 
+from apps.booking.models import Booking  # noqa
+from apps.movie.models import Movie  # noqa
+from apps.room.models import Room  # noqa
+from apps.schedule.models import Schedule  # noqa
 from core.config import settings
-from models.base import Base
+from core.model_base import Base
 
 db_url = str(settings.ASYNC_DATABASE_URI)
 # this is the Alembic Config object, which provides

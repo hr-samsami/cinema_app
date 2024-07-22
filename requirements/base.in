@@ -3,3 +3,7 @@ pydantic
 sqlalchemy
 alembic
 asyncpg
+pydantic-settings
+pytest
+pytest-asyncio
+httpx
