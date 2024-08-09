@@ -22,5 +22,5 @@ class MovieUpdate(MovieBase):
 class Movie(MovieBase):
     id: int
 
-    class Config:
-        orm_mode = True
+    class ConfigDict:
+        from_attributes = True

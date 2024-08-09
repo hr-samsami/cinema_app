@@ -26,8 +26,8 @@ class ScheduleUpdate(ScheduleBase):
 class Schedule(ScheduleBase):
     id: int
 
-    class Config:
-        orm_mode = True
+    class ConfigDict:
+        from_attributes = True
 
 
 class MovieSchedule(BaseModel):

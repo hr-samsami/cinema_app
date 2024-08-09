@@ -22,7 +22,7 @@ class BookingUpdate(BookingBase):
 class Booking(BookingBase):
     id: int
 
-    class Config:
+    class ConfigDict:
         from_attributes = True
 
 
@@ -37,5 +37,5 @@ class SeatAvailability(BaseModel):
     seats_per_row: int
     total_seats: int
 
-    class Config:
+    class ConfigDict:
         from_attributes = True

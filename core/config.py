@@ -2,10 +2,12 @@ from typing import Any
 
 from pydantic import PostgresDsn, field_validator
 from pydantic_core.core_schema import ValidationInfo
-from pydantic_settings import BaseSettings
+from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
 class Settings(BaseSettings):
+    model_config = SettingsConfigDict(env_file='.env', env_file_encoding='utf-8')
+
     ENABLE_DEBUG: bool = False
     ENVIRONMENT: str = 'dev'
 
@@ -30,9 +32,6 @@ class Settings(BaseSettings):
                 path=info.data['DATABASE_NAME'],
             )
         return v
-
-    class ConfigDict:
-        env_file = '.env'
 
 
 settings = Settings()

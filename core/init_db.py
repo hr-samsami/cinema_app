@@ -7,11 +7,13 @@ from core.model_base import Base
 DATABASE_URL = settings.ASYNC_DATABASE_URI
 
 engine = create_async_engine(str(DATABASE_URL), echo=True)
+
 async_session = sessionmaker(
     autocommit=False,
     autoflush=False,
     bind=engine,
     class_=AsyncSession,
+    expire_on_commit=False,
 )
 
 

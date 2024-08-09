@@ -22,5 +22,5 @@ class RoomUpdate(RoomBase):
 class Room(RoomBase):
     id: int
 
-    class Config:
-        orm_mode = True
+    class ConfigDict:
+        from_attributes = True

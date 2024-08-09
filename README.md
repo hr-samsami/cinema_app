@@ -124,3 +124,7 @@ When adding new packages, follow these steps:
 ## Docker
 
 The Dockerfile located at `dockerfiles/Dockerfile.dev` can be used to build and run the application in a containerized environment. For more details, see the [Docker](#docker) section.
+
+
+export PYTHONPATH=$(pwd)
+uvicorn main:app --reload
